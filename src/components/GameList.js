@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const GameList = () => {
   const [gameList, setGameList] = useState([]);
@@ -24,8 +25,10 @@ const GameList = () => {
   return (
     <div>
       <ul>
-        {gameList.map((game) => (
-          <li key={game.id}> {game.name}</li>
+        {gameList.map(({ id, name }) => (
+          <li key={id}>
+            <Link to={`/${id}`}> {name}</Link>
+          </li>
         ))}
         ;
       </ul>
