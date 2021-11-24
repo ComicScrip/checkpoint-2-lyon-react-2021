@@ -1,4 +1,5 @@
 # REACT GAMES - CHECKPOINT 2
+
 ## Disclaimer
 
 The checkpoint is quite consequent, it's no big deal if you don't do everything before the deadline. Do your best, and most importantly **HAVE FUN** :smiley:
@@ -25,7 +26,7 @@ _Please please, don't forget to make atomic commits with explicit messages_ :pra
 
 You can find the API documentation there :
 
-- https://wild-games.jsrover.wilders.dev 
+- https://wild-games.jsrover.wilders.dev
 
 If this one doesn't work, or is too slow, we also prepared some mirrors :
 
@@ -37,7 +38,7 @@ If this one doesn't work, or is too slow, we also prepared some mirrors :
 - Then, create a `<Header />` component that displays a cool welcome message.
 - Pass a `name` prop to this component, to display your website name (_react game_ if you don't have any idea)
 
-_commit_ 
+_commit_
 
 ### Some list ?
 
@@ -46,7 +47,7 @@ _commit_
 - In the `<GameList />` component, you will need to get the list from the API, and map it in your jsx. For each game you get from the API, display a `<Game />` component.
 - Your `<Game />` component will need some props to display the game informations. There are plenty of informations you can use (_name, rating, images, ..._). Display them in the format of your choice !
 
-_commit_ 
+_commit_
 
 ### Filtering
 
@@ -72,7 +73,8 @@ _you know what to do, right ?_ :wink:
 
 - To answer the quiz go to [this application](https://wild-quizz.jsrover.wilders.dev/play/checkpoint-2).
 
-- - -
+---
+
 ### Congrats ! You did it ! :confetti_ball:
 
 You really deserved a beer ! :beers: (or your favourite drink)
@@ -91,7 +93,7 @@ There is a really cool library called [react-query](https://react-query.tanstack
 
 ### Use a CSS framework
 
-Integrate the CSS framework of your choice in your React App. 
+Integrate the CSS framework of your choice in your React App.
 If you don't know which one to choose, we can recommand Tailwind.
 
 You can start by looking at the documentation about [how to install it](https://tailwindcss.com/docs/installation).
