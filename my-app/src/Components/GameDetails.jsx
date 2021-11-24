@@ -3,9 +3,9 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Games = () => {
+function GameDetails() {
   const { id } = useParams();
-  const [game, setGames] = useState(null);
+  const [game, setGames] = useState();
 
   useEffect(() => {
     axios
@@ -15,13 +15,18 @@ const Games = () => {
       });
   }, [id]);
 
-  if (!Games) {
-    return (
-      <div>
-        <span>LOADING</span>
-      </div>
-    );
+  if (!game) {
+    return <h1>Loading</h1>;
   }
-};
 
-export default Games;
+  return (
+    <div>
+      <h2>{game.name}</h2>
+      <p>
+        rating:{game.rating} / released:{game.released}
+      </p>
+    </div>
+  );
+}
+
+export default GameDetails;

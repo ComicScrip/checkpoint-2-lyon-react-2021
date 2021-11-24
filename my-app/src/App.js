@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Header from "./Components/Header";
 import Games from "./Components/Games";
 import GamesList from "./Components/GamesList";
+import GameDetails from "./Components/GameDetails";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <Header title="Ben" />
         <Switch>
           <Route exact path="/" component={GamesList} />
-          <Route path="/:id" component={Games} />
+          <Route exact path="/games/:id" component={GameDetails} />
         </Switch>
       </BrowserRouter>
     </>

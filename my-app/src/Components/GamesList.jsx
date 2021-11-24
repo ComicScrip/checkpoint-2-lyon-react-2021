@@ -1,30 +1,36 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Games from "./Games";
 
 const GamesList = () => {
-  const [gamesList, setGamesList] = useState([]);
-  const [gameFilter, setGameFilter] = useState("");
+  const [gameList, setGameList] = useState("");
+  const [onlyMinRate, setOnlyMinRate] = useState(false);
+
   useEffect(() => {
     axios.get("https://wild-games.jsrover.wilders.dev/games").then((res) => {
-      setGamesList(res.data);
+      setGameList(res.data);
       console.log(res.data);
     });
   }, []);
 
+  if (!gameList) {
+    return (
+      <div>
+        <span>LOADING</span>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <ul>
-        {gamesList.map((game) => {
-          return (
-            <Link to={`/${game.id}`}>
-              <li key={game.id}>{game.name}</li>
-            </Link>
-          );
-        })}
-      </ul>
-    </div>
+    <>
+      <button onClick={() => setOnlyMinRate(!onlyMinRate)}>Note min 4.5</button>
+      {gameList
+        .filter((elem) => (elem.rating > 4.5 ? onlyMinRate : !onlyMinRate))
+        .map(({ id, name, rating }) => (
+          <Games key={id} name={name} rating={rating} />
+        ))}
+    </>
   );
 };
 export default GamesList;
