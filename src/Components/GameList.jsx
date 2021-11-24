@@ -3,6 +3,7 @@ import axios from "axios";
 
 const GameList = () => {
   const [gameList, setGameList] = useState("");
+  const [onlyMinRate, setOnlyMinRate] = useState(false);
 
   useEffect(() => {
     axios.get("https://wild-games.jsrover.wilders.dev/games").then((res) => {
@@ -21,10 +22,16 @@ const GameList = () => {
 
   return (
     <>
+      <button onClick={() => setOnlyMinRate(!onlyMinRate)}>
+        {" "}
+        Note min 4.5
+      </button>
       <ul>
-        {gameList.map(({ id, name }) => (
-          <li key={id}>({name})</li>
-        ))}
+        {gameList
+          .filter((elem) => (elem.rating > 4.5 ? onlyMinRate : !onlyMinRate))
+          .map(({ id, name }) => (
+            <li key={id}>({name})</li>
+          ))}
       </ul>
     </>
   );
