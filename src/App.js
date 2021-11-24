@@ -2,6 +2,7 @@ import GameList from "./components/GameList";
 import { Route, Switch } from 'react-router';
 import Home from './pages/Home'
 
+
 function App() {
   return (
     <div className="App">

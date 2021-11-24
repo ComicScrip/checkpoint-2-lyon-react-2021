@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Game from "../components/Game";
 
-function GameList({ games, rating, image }) {
+function GameList({ games, background, image }) {
   const [game, setGame] = useState([]);
   const [filter, setFilter] = useState(false);
 
@@ -19,11 +19,18 @@ function GameList({ games, rating, image }) {
     <div>
       <ul>
         {!filter
-          ? game.map((game) => {
+          ? game.map((items) => {
               return (
-                <li key={game.id}>
-                  <Game name={game.name} id={game.id} />
+                <ul>
+                <li key={items.id}>
+                  <Game name={items.name} id={items.id} />
                 </li>
+                <li>
+                <li key={items.id}>
+                  <Game background={items.background_image}id={items.id} />
+                </li>
+                </li>
+                </ul>
               );
             })
           : game
@@ -37,7 +44,6 @@ function GameList({ games, rating, image }) {
               })}
       </ul>
       <button type="button" onClick={() => setFilter(!filter)}>
-        {" "}
         {filter ? "Show Movies" : "Show only filtered "}
       </button>
     </div>
