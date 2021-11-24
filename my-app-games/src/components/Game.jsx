@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 
 const Game = (props) => {
   const { game } = props;
+  const [deleteGame, setDeleteGame] = useState(false);
 
   return (
-    <div>
+    <div className={`${deleteGame ? "hidden" : "flex" }`}>
       <div>
         <img src={game.background_image} alt="Game_Image" className="image" />
         <h2>{game.name}</h2>
@@ -14,6 +15,7 @@ const Game = (props) => {
         <Link to={`/games/${game.id}`}>
           <button>Show me more about {game.name}</button>
         </Link>
+        <button onClick={() => setDeleteGame(!deleteGame)}>Supprimer</button>
       </div>
     </div>
   );
