@@ -33,14 +33,14 @@ function GameDetails() {
   if (loading) {
     return (
       <div>
-        <span className="text-red">LOADING</span>
+        <span className="text-red-500">LOADING</span>
       </div>
     );
   }
 
   return (
     <div>
-      <div className="border-black">
+      <div>
         <div>
           <h2>{gameDetails.name}</h2>
           <img src={gameDetails.background_image} alt="gamePic" />
