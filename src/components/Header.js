@@ -2,9 +2,8 @@ import React from 'react';
 
 function Header({ name }) {
   return (
-    <div>
-      <h1>Hello, I'm {name}</h1>
-      <h2>Welcome to my new Checkpoint !</h2>
+    <div id="header" className="p-4 bg-gray-700 text-white font-semibold">
+      <h1>{name}</h1>
     </div>
   );
 }

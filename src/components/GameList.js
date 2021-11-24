@@ -19,12 +19,12 @@ function GameList() {
   return (
     <div>
       Game List :
-      <ul>
+      <ul className="flex flex-col gap-8">
         {!filter
           ? gameList.map((game) => {
               return (
                 <li key={game.id}>
-                  <Game name={game.name} id={game.id} />
+                  <Game game={game} />
                 </li>
               );
             })
@@ -33,7 +33,7 @@ function GameList() {
               .map((game) => {
                 return (
                   <li key={game.id}>
-                    <Game name={game.name} id={game.id} />
+                    <Game game={game} />
                   </li>
                 );
               })}

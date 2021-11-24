@@ -3,8 +3,7 @@ import GameList from '../components/GameList';
 
 function Home() {
   return (
-    <div>
-      Home
+    <div id="home">
       <GameList />
     </div>
   );

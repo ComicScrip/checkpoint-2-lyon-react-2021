@@ -3,15 +3,19 @@ import './App.css';
 import Header from './components/Header';
 import Home from './pages/Home';
 import GameDetails from './components/GameDetails';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
-      <Header name="Yannis" />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/games/:id" component={GameDetails} />
-      </Switch>
+      <Header name="Wild Game" />
+      <div id="main" className="flex flex-col items-center pt-10 bg-gray-500">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/games/:id" component={GameDetails} />
+        </Switch>
+      </div>
+      <Footer />
     </div>
   );
 }
