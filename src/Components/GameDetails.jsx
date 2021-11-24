@@ -14,10 +14,25 @@ const GameDetails = () => {
   if (!gameDetails) return null;
 
   return (
-    <div>
-      <h4 key={gameDetails.id}> {gameDetails.name}</h4>
-      <p> Rating : {gameDetails.rating}</p>
-      <p> released Date : {gameDetails.released}</p>
+    <div className="flex items-center justify-center m-20 border-2 shadow-lg rounded-xl p-8">
+      <div className="px-10">
+        <h4 key={gameDetails.id} className="text-2xl pb-4">
+          {gameDetails.name}
+        </h4>
+        <p className="italic pl-3 pb-4"> Rating : {gameDetails.rating}</p>
+        <p className="italic pl-3 pb-4">
+          released Date : {gameDetails.released}
+        </p>
+
+        <p className="italic pl-3 pb-4">
+          Genre : {gameDetails.genres[0].name}, {gameDetails.genres[1].name}{" "}
+        </p>
+      </div>
+      <img
+        src={gameDetails.background_image}
+        alt={gameDetails.name}
+        className="w-96"
+      />
     </div>
   );
 };
