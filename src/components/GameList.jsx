@@ -13,6 +13,12 @@ import Game from "./Game";
 
 const GameList = () => {
   const [gameList, setGameList] = useState(null);
+  const [bestGame, setBestGame] = useState(false);
+
+  const filterGames = () => {
+    setBestGame(!bestGame);
+    setGameList(gameList.filter((game) => game.rating > 4.5));
+  };
 
   useEffect(() => {
     axios
@@ -23,6 +29,9 @@ const GameList = () => {
   if (!gameList) return <p>LOADING</p>;
   return (
     <div>
+      <button onClick={filterGames}>
+        Check out the best games of all the time
+      </button>
       {gameList.map(({ name, released, rating, genres }) => (
         <Game
           name={name}
