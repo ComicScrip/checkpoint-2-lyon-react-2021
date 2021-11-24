@@ -33,8 +33,9 @@ const Game = () => {
   return (
     <div>
       <h1>{game.name}</h1>
-      <p>{game.released}</p>
-      <img src="{game.background_image}" />
+      <p>Released : {game.released}</p>
+      <img className="image" alt="game img" src={game.background_image} />
+      <img src={game.clip} />
     </div>
   );
 };
