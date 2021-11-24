@@ -7,29 +7,24 @@ const GamesList = () => {
   const [gamesList, setGamesList] = useState([]);
   const [gameFilter, setGameFilter] = useState("");
   useEffect(() => {
-    axios.get("wild-games.jsrover.wilders.dev/").then((res) => {
+    axios.get("https://wild-games.jsrover.wilders.dev/games").then((res) => {
       setGamesList(res.data);
+      console.log(res.data);
     });
   }, []);
 
   return (
     <div>
-      <input
-        placeholder="game filter"
-        value={gameFilter}
-        onChange={(e) => setGameFilter(e.target.value)}
-      />
       <ul>
-        {gamesList
-          .filter((post) => post.title.includes(gameFilter))
-          .map(({ title, id }) => (
-            <li key={id}>
-              <Link to={`/${id}`}>{title} </Link>
-            </li>
-          ))}
+        {gamesList.map((game) => {
+          return (
+            <Link to={`/${game.id}`}>
+              <li key={game.id}>{game.name}</li>
+            </Link>
+          );
+        })}
       </ul>
     </div>
   );
 };
-
 export default GamesList;

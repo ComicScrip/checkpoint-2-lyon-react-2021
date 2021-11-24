@@ -20,7 +20,6 @@ const Games = () => {
       </div>
     );
   }
-  return <div>Games</div>;
 };
 
 export default Games;
