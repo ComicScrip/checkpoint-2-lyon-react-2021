@@ -1,3 +1,23 @@
 body {
   margin: 0;
+  background: linear-gradient(#0a0909, #585d8f);
+  text-decoration: none;
+  text-align: center;
+
+  color: whitesmoke;
+  font-family: "LAURA", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+a:visited {
+  color: whitesmoke;
+}
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: #585d8f;
 }

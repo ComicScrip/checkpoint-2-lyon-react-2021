@@ -1,0 +1,11 @@
+#header-container {
+  color: whitesmoke;
+}
+
+#header-title {
+  color: whitesmoke;
+  font-family: "LAURA", sans-serif;
+  text-align: center;
+  font-size: 3em;
+  text-decoration: none;
+}
