@@ -1,5 +1,3 @@
- // When clicking again on this button, the list should display all the games again.
-
 // API : https://wild-games.jsrover.wilders.dev/games
 // IF DOESN'T WORK, CHECKOUT THE MIRROR API : https://apis.wilders.dev/wild-games
 
@@ -28,16 +26,13 @@ const GameList = () => {
       <button onClick={filterGames}>
         Check out the best games of all the time
       </button>
-      {gameList.map(({ name, released, rating, genres }) => (
-        <Game
-          name={name}
-          released={released}
-          rating={rating}
-          genre={genres} // the heck is missing ?
-        />
+      {gameList.map(({ name, released, rating }) => (
+        <Game name={name} released={released} rating={rating} />
       ))}
     </div>
   );
 };
 
 export default GameList;
+
+// When clicking again on filter button, the list should display all the games again. To correct

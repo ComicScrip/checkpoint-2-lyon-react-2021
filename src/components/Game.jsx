@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Game = ({ name, released, rating, genres }) => {
+const Game = ({ id, name, rating }) => {
   return (
     <div>
-      <h2>{name}</h2>
-      <p>Released date: {released}</p>
-      <span>Rating: {rating}🌟 </span>
-      <p>Genre : {genres}</p>
+      <h2>
+        <Link to={`/games/${id}`}>{name}</Link>{" "}
+      </h2>
+      <p>Rating: {rating}🌟 </p>
     </div>
   );
 };
