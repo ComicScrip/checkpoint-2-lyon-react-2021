@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Game from "./Game";
 import useSwr from "swr";
+import { Link } from "react-router-dom";
 
 const GameList = () => {
   // ------------     APPEL API
@@ -29,12 +30,10 @@ const GameList = () => {
           .map((game) => {
             return (
               <li>
-                <Game
-                  key={game.id}
-                  name={game.name}
-                  rating={game.rating}
-                  img={game.background_image}
-                />
+                <Game key={game.id} name={game.name} rating={game.rating} />
+                <Link to={`/${game.id}`}>
+                  <button> More </button>
+                </Link>
               </li>
             );
           })}
