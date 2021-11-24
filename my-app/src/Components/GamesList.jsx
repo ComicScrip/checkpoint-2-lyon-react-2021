@@ -14,7 +14,7 @@ const GamesList = () => {
     });
   }, []);
 
-  if (!gameList) {
+  if (!GamesList) {
     return (
       <div>
         <span>LOADING</span>
@@ -23,14 +23,21 @@ const GamesList = () => {
   }
 
   return (
-    <>
+    <div>
       <button onClick={() => setOnlyMinRate(!onlyMinRate)}>Note min 4.5</button>
+
       {gameList
         .filter((elem) => (elem.rating > 4.5 ? onlyMinRate : !onlyMinRate))
-        .map(({ id, name, rating }) => (
-          <Games key={id} name={name} rating={rating} />
+        .map(({ id, name, rating, released }) => (
+          <Games
+            key={id}
+            id={id}
+            name={name}
+            rating={rating}
+            released={released}
+          />
         ))}
-    </>
+    </div>
   );
 };
 export default GamesList;

@@ -1,7 +1,6 @@
 import "./App.css";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Header from "./Components/Header";
-import Games from "./Components/Games";
 import GamesList from "./Components/GamesList";
 import GameDetails from "./Components/GameDetails";
 

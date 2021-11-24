@@ -3,28 +3,28 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function GameDetails() {
+function GameDetails({ name, rating, released }) {
   const { id } = useParams();
-  const [game, setGames] = useState();
+  const [gameDetails, setGameDetails] = useState();
 
   useEffect(() => {
     axios
       .get(`https://wild-games.jsrover.wilders.dev/games/${id}`)
       .then((res) => {
-        setGames(res.data);
+        setGameDetails(res.data);
       });
   }, [id]);
 
-  if (!game) {
+  if (!gameDetails) {
     return <h1>Loading</h1>;
   }
 
   return (
-    <div>
-      <h2>{game.name}</h2>
-      <p>
-        rating:{game.rating} / released:{game.released}
-      </p>
+    <div className="quoteGame">
+      <h1>{gameDetails.name}</h1>
+      <h2> {gameDetails.rating}</h2>
+      <p>{gameDetails.released} </p>
+      <img src={gameDetails.background_image} alt="img-of-the-game" />
     </div>
   );
 }
