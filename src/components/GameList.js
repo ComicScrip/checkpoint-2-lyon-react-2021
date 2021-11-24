@@ -24,7 +24,7 @@ function GameList() {
           ? gameList.map((game) => {
               return (
                 <li key={game.id}>
-                  <Game name={game.name} />
+                  <Game name={game.name} id={game.id} />
                 </li>
               );
             })
@@ -33,7 +33,7 @@ function GameList() {
               .map((game) => {
                 return (
                   <li key={game.id}>
-                    <Game name={game.name} />
+                    <Game name={game.name} id={game.id} />
                   </li>
                 );
               })}
