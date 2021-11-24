@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import StarIcon from '@mui/icons-material/Star';
 
 function Game({ game }) {
   const [deleteGame, setDeleteGame] = useState(false);
@@ -16,10 +17,14 @@ function Game({ game }) {
         <div id="gameTile" className="text-white">
           <img
             src={game.background_image}
-            className=" w-64 h-52 mb-2 rounded-lg"
+            className=" w-64 h-52 mb-2 rounded-t-lg"
             alt={game.name}
           />
-          {game.name}
+          <h2>{game.name}</h2>
+          <p className="flex flex-row justify-center items-center gap-2">
+            <span>{game.rating} </span>
+            <StarIcon sx={{ color: '#e8e105' }} />
+          </p>
         </div>
       </Link>
       <button
