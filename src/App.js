@@ -1,7 +1,7 @@
 import GameList from "./components/GameList";
 import Header from "./components/Header";
-import Game from "./components/Game";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Game from "./components/Game";
 
 function App() {
   return (

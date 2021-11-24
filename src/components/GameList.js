@@ -29,14 +29,19 @@ const GameList = () => {
 
   return (
     <div>
-      <button type="submit" id="button" onClick={HandleClick}>
-        Filter rating sup 4.5
+      <button
+        type="button"
+        id="button"
+        onClick={HandleClick}
+        className="text-center m-3 border-4 border-black p-5 "
+      >
+        Filter rating sup4.5
       </button>
       <ul>
         {gameList
           .filter((game) => !ratingGame || game.rating >= 4.5)
           .map(({ id, name }) => (
-            <li key={id}>
+            <li key={id} className="m-3 p-4 ">
               <Link to={`/${id}`}> {name}</Link>
             </li>
           ))}

@@ -6,6 +6,7 @@ import { useParams } from "react-router";
 const Game = () => {
   const { id } = useParams();
   const [game, setGame] = useState(null);
+
   useEffect(() => {
     try {
       const getGame = async () => {
@@ -31,11 +32,15 @@ const Game = () => {
   }
 
   return (
-    <div>
-      <h1>{game.name}</h1>
-      <p>Released : {game.released}</p>
-      <img className="image" alt="game img" src={game.background_image} />
-      <img src={game.clip} />
+    <div className="flex flex-col justify-center">
+      <h1 className="text-2xl text-center p-15 m-10"></h1>
+      <p className=" text-xl text-center">Released : {game.released}</p>
+      <p className="p-5 m-5 text-center">Rating = {game.rating} / 5 </p>
+      <img
+        className="image self-center"
+        alt="game img"
+        src={game.background_image}
+      />
     </div>
   );
 };
