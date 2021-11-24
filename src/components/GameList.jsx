@@ -23,7 +23,7 @@ function GameList() {
           .map((game) => {
             return (
               <li key={game.id}>
-                <Game name={game.name} background={game.background_image} id={game.id} />
+                <Game name={game.name} background={game.background_image} movies={game.clip.clip} released={`Released From${game.released}`} id={game.id} />
               </li>
             );
           })}
