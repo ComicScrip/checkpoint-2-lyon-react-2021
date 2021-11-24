@@ -8,10 +8,10 @@ function App() {
   return (
     <BrowserRouter>
       <Header websiteTitle='react game website'/>
-      {/* <Switch>
-        <Route exact path='/' component={} />
-        <Route path='/:id' component={} />
-      </Switch> */}
+      <Switch>
+        <Route exact path='/' component={GameList} />
+        {/* <Route path='/:id' component={} /> */}
+      </Switch>
     </BrowserRouter>
   )
 };
