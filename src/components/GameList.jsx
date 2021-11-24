@@ -1,12 +1,16 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Game from "./Game";
 
 function GameList() {
   const [gameList, setGameList] = useState([]);
-  const [gameFilter, setGameFilter] = useState("");
+  const [list, setList] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const gameFilter = () => {
+    setList(!list);
+  };
 
   useEffect(() => {
     const getList = async () => {
@@ -32,16 +36,7 @@ function GameList() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center flex-col my-4">
-        <div
-          className="
-        animate-spin
-        rounded-full
-        h-20
-        w-20
-        border-t-2 border-b-2 border-red my-3
-      "
-        />
+      <div>
         <span className="text-red">LOADING</span>
       </div>
     );
@@ -49,15 +44,13 @@ function GameList() {
 
   return (
     <div>
+      <button onClick={gameFilter}>Best Games Filter</button>
       <ul>
-        {gameList.map((game) => {
-          return (
-            <Link to={`/${game.id}`}>
-              {" "}
-              <li key={game.id}>{game.name}</li>{" "}
-            </Link>
-          );
-        })}
+        {gameList
+          .filter((game) => !list || game.rating >= 4.5)
+          .map((game) => {
+            return <Game key={game.id} game={game} />;
+          })}
       </ul>
     </div>
   );

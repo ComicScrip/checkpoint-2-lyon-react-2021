@@ -11,7 +11,7 @@ function App() {
         <Header headerTitle="WildGames" />
         <Switch>
           <Route exact path="/" component={GameList} />
-          <Route exact path="/:id" component={GameDetails} />
+          <Route exact path="/games/:id" component={GameDetails} />
           <Route path="/error" component={Error} />
         </Switch>
       </BrowserRouter>
