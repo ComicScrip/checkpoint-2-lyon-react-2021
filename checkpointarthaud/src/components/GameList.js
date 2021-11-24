@@ -5,9 +5,9 @@ import Game from "./Game";
 
 const GameList = () => {
   const [gameList, setGameList] = useState([]);
-  const [onlyTheBestGame, setOnlyTheBestGame] = useState(false);
+  const [onlyTheBestGames, setOnlyTheBestGames] = useState(false);
   function handleOnlyTheBestGame (){
-    setOnlyTheBestGame(!onlyTheBestGame)
+    setOnlyTheBestGames(!onlyTheBestGames)
   } 
 
 
@@ -22,14 +22,19 @@ const GameList = () => {
 
   return (
   
-  <div className='container'>
-      {gameList
-      .map((game) => (
-          <div key={game.id}>
-              <Game game={game} />
-      </div>
-      ))}
-  </div>
+  <>
+    <button
+          onclick={handleOnlyTheBestGame}>Games whose rating is above 4.5 :{''}
+          {onlyTheBestGames ? "ON" : "OFF"}
+      </button>
+      <div className='container'>
+              {gameList
+                  .map((game) => (
+                      <div key={game.id}>
+                          <Game game={game} />
+                      </div>
+                  ))}
+          </div></>
   )};
 
 export default GameList;
