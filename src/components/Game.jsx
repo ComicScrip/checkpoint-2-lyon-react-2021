@@ -5,12 +5,15 @@ const Game = ({ background,name, id }) => {
   const [rempoveGame, setremoveGame] = useState(false);
 
   return (
-    <div className={`${rempoveGame ? "hidden" : "flex flex-row gap-2"}`}>
+    <div className={`${rempoveGame ? "hidden" : "flex justify-center items-center px-10"}`}>
       <Link to={`/games/${id}`}>{name}</Link>
-      <button type="button" onClick={() => setremoveGame(!rempoveGame)}>
+    
+      <div className="flex flex-row items-center justify-center">
+      <img className="w-10/12 rounded-lg" src={background} alt={id.name} />
+      </div>
+        <button className="flex" type="button" onClick={() => setremoveGame(!rempoveGame)}>
         Remove
       </button>
-      <img src={background} alt={id.name} />
     </div>
   );
 };
