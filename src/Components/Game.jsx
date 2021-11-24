@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Game = () => {
-  const { id } = useParams();
+const Game = ({ id, name, rating, released }) => {
   const [game, setGame] = useState(null);
 
   useEffect(() => {
@@ -24,9 +23,11 @@ const Game = () => {
 
   return (
     <div>
-      <h2>{game.name}</h2>
+      <h2>
+        <Link to={`/game/${id}`}>{name}</Link>
+      </h2>
       <p>
-        rating:{game.rating} / released:{game.released}
+        rating:{rating} / released:{released}
       </p>
     </div>
   );

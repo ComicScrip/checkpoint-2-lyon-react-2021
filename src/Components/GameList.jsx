@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+
 import axios from "axios";
+import Game from "./Game";
 
 const GameList = () => {
   const [gameList, setGameList] = useState("");
@@ -26,13 +28,18 @@ const GameList = () => {
         {" "}
         Note min 4.5
       </button>
-      <ul>
-        {gameList
-          .filter((elem) => (elem.rating > 4.5 ? onlyMinRate : !onlyMinRate))
-          .map(({ id, name }) => (
-            <li key={id}>({name})</li>
-          ))}
-      </ul>
+
+      {gameList
+        .filter((elem) => (elem.rating > 4.5 ? onlyMinRate : !onlyMinRate))
+        .map(({ id, name, rating, released }) => (
+          <Game
+            key={id}
+            id={id}
+            name={name}
+            rating={rating}
+            released={released}
+          />
+        ))}
     </>
   );
 };
