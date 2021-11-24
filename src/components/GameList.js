@@ -17,8 +17,15 @@ function GameList() {
   }, []);
 
   return (
-    <div>
-      Game List :
+    <div id="listGame" className="flex flex-col gap-8">
+      <button
+        type="button"
+        onClick={() => setFilter(!filter)}
+        className="bg-blue-500 p-2 rounded-lg"
+      >
+        {' '}
+        {filter ? 'Show All Films' : 'Show only Good Films '}
+      </button>
       <ul className="flex flex-col gap-8">
         {!filter
           ? gameList.map((game) => {
@@ -38,10 +45,6 @@ function GameList() {
                 );
               })}
       </ul>
-      <button type="button" onClick={() => setFilter(!filter)}>
-        {' '}
-        {filter ? 'Show All Films' : 'Show only Good Films '}
-      </button>
     </div>
   );
 }
