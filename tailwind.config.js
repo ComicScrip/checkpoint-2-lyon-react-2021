@@ -6,6 +6,9 @@ module.exports = {
       spacing: {
         500: '500px',
       },
+      dropShadow: {
+        white: '0 35px 35px rgba(255, 255, 255, 0.25)',
+      },
     },
   },
   variants: {
