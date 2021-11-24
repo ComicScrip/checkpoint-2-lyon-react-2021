@@ -16,21 +16,27 @@ function GameList() {
     fetchData();
   }, []);
   return (
-    <div>
+    <div className="space-y-6">
       <ul>
         {game
-          .filter((game) => filter ?game.rating >= 4.5 :true )
+          .filter((game) => (filter ? game.rating >= 4.5 : true))
           .map((game) => {
             return (
               <li key={game.id}>
-                <Game name={game.name} background={game.background_image} movies={game.clip.clip} released={`Released From${game.released}`} id={game.id} />
+                <Game
+                  name={game.name}
+                  background={game.background_image}
+                  movies={game.clip.clip}
+                  released={`Released From${game.released}`}
+                  id={game.id}
+                />
               </li>
             );
           })}
-      </ul>
       <button type="button" onClick={() => setFilter(!filter)}>
         {filter ? "Show Movies" : "Show only filtered "}
       </button>
+      </ul>
     </div>
   );
 }
