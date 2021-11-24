@@ -17,7 +17,7 @@ function GameList() {
   }, []);
 
   return (
-    <div id="listGame" className="flex flex-col gap-8">
+    <div id="listGame" className="flex flex-col gap-8 pt-10">
       <button
         type="button"
         onClick={() => setFilter(!filter)}
