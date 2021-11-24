@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Game from './Game';
 
 function GameList() {
   const [gameList, setGameList] = useState([]);
@@ -19,7 +20,11 @@ function GameList() {
       Game List :
       <ul>
         {gameList.map((game) => {
-          return <li> {game.name}</li>;
+          return (
+            <li key={game.id}>
+              <Game name={game.name} />
+            </li>
+          );
         })}
       </ul>
     </div>

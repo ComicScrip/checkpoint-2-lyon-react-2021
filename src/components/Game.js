@@ -1,10 +1,15 @@
-import React from 'react';
-import GameList from './GameList';
+import React, { useState } from 'react';
 
-function Game() {
+function Game({ name }) {
+  const [deleteGame, setDeleteGame] = useState(false);
+
   return (
-    <div>
-      <GameList />
+    <div className={`${deleteGame ? 'hidden' : 'flex flex-row gap-2'}`}>
+      {name}
+      <button type="button" onClick={() => setDeleteGame(!deleteGame)}>
+        {' '}
+        Delete{' '}
+      </button>
     </div>
   );
 }

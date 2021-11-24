@@ -1,11 +1,11 @@
 import React from 'react';
-import Game from '../components/Game';
+import GameList from '../components/GameList';
 
 function Home() {
   return (
     <div>
       Home
-      <Game />
+      <GameList />
     </div>
   );
 }
