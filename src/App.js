@@ -1,7 +1,8 @@
 import "./App.css";
+import Header from "./Components/Header";
 
 function App() {
-  return <div>My app</div>;
+  return <Header name="Toto" />;
 }
 
 export default App;
