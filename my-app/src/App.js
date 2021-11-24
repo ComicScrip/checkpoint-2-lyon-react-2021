@@ -10,8 +10,8 @@ function App() {
       <BrowserRouter>
         <Header title="Ben" />
         <Switch>
-          <Route exact path="/GamesList" component={GamesList} />
-          <Route exact path="/Games/:id" component={Games} />
+          <Route exact path="/" component={GamesList} />
+          <Route path="/:id" component={Games} />
         </Switch>
       </BrowserRouter>
     </>

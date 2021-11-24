@@ -5,12 +5,14 @@ import axios from "axios";
 
 const Games = () => {
   const { id } = useParams();
-  const [Games, setGames] = useState(null);
+  const [game, setGames] = useState(null);
 
   useEffect(() => {
-    axios.get(`wild-games.jsrover.wilders.dev/${id}`).then((res) => {
-      setGames(res.data);
-    });
+    axios
+      .get(`https://wild-games.jsrover.wilders.dev/games/${id}`)
+      .then((res) => {
+        setGames(res.data);
+      });
   }, [id]);
 
   if (!Games) {
@@ -20,6 +22,14 @@ const Games = () => {
       </div>
     );
   }
+  return (
+    <div>
+      <h2>{game.name}</h2>
+      <p>
+        rating:{game.rating} / released:{game.released}
+      </p>
+    </div>
+  );
 };
 
 export default Games;
