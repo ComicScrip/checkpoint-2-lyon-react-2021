@@ -1,8 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
+
+
 
 const Game = ({game}) => {
-  return (
+
+    const [deleteGame, setDeleteGame] = useState()
+    function handleRemoveGame() { 
+        setDeleteGame(!deleteGame)
+    }
+    return (
     <>
+    <button 
     <div key={game.id}>
       <img
         width="700"
@@ -18,7 +29,9 @@ const Game = ({game}) => {
             <li>{genre.name}</li>
           ))}
         </ul>
+        <Link to={`/games/${game.id}`}>More details</Link>
     </div>
+    
     </>
   );
 };
