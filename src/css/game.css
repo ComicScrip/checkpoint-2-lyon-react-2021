@@ -1,0 +1,24 @@
+.main-game-container {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.game-container {
+  background-color: #f0f0f0;
+  width: 26%;
+  border-radius: 20px;
+  padding: 16px;
+  margin: 16px;
+}
+
+button {
+  padding: 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 3px 3px 6px 2px rgba(233, 233, 233, 0.3);
+  font-weight: bold;
+  margin: 1% 0 3% 39%;
+}

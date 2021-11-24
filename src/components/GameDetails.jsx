@@ -6,6 +6,7 @@ import "../css/gameDetails.css";
 const GameDetails = () => {
   const { id } = useParams();
   const [gameDetails, setGameDetails] = useState(null);
+  if (gameDetails !== null) console.log(gameDetails.dominant_color);
 
   useEffect(() => {
     axios
