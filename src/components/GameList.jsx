@@ -1,28 +1,36 @@
-// <GameList /> component, you will need to get the list from the API,
-//and map it in your jsx. For each game you get from the API,
-// display a < Game /> component.
+// // Now that you are displaying all games, your next mission is
+// // to add a filter on this list.
+// // Add a button to the < GameList /> component, when you click on it,
+// //     it will display only the games whose rating is above 4.5.
+// // When clicking again on this button, the list should display all the games again.
 
-// API : https://wild-games.jsrover.wilders.dev/games
-// IF DOESN'T WORK, CHECKOUT THE MIRROR API : https://apis.wilders.dev/wild-games
+// // API : https://wild-games.jsrover.wilders.dev/games
+// // IF DOESN'T WORK, CHECKOUT THE MIRROR API : https://apis.wilders.dev/wild-games
 
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import Game from "./Game";
 
 const GameList = () => {
-  const [gameList, setGameList] = useState([]);
+  const [gameList, setGameList] = useState(null);
+
   useEffect(() => {
-    axios.get("https://wild-games.jsrover.wilders.dev/games").then((res) => {
-      setGameList(res.data);
-    });
+    axios
+      .get("https://wild-games.jsrover.wilders.dev/games")
+      .then((res) => setGameList(res.data));
   }, []);
+
+  if (!gameList) return <p>LOADING</p>;
   return (
     <div>
-      <ul>
-        {gameList.map(({ name }) => (
-          <li> {name}</li>
-        ))}
-      </ul>
+      {gameList.map(({ name, released, rating, genres }) => (
+        <Game
+          name={name}
+          released={released}
+          rating={rating}
+          genre={genres} // the heck is missing ?
+        />
+      ))}
     </div>
   );
 };

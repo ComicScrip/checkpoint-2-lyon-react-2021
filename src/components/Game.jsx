@@ -1,3 +1,14 @@
-// <Game /> component will need some props to display the game informations. 
-// There are plenty of informations you can use(name, rating, images, ...).
-// Display them in the format of your choice!
+import React from "react";
+
+const Game = ({ name, released, rating, genres }) => {
+  return (
+    <div>
+      <h2>{name}</h2>
+      <p>Released date: {released}</p>
+      <span>Rating: {rating}🌟 </span>
+      <p>Genre : {genres}</p>
+    </div>
+  );
+};
+
+export default Game;
