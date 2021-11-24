@@ -16,7 +16,8 @@ const GameDetails = () => {
   return (
     <div>
       <h4 key={gameDetails.id}> {gameDetails.name}</h4>
-      <p> {gameDetails.rating}</p>
+      <p> Rating : {gameDetails.rating}</p>
+      <p> released Date : {gameDetails.released}</p>
     </div>
   );
 };
