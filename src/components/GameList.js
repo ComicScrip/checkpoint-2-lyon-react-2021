@@ -17,16 +17,16 @@ function GameList() {
   }, []);
 
   return (
-    <div id="listGame" className="flex flex-col gap-8 pt-10">
+    <div id="listGame" className="flex flex-col gap-8 pt-10 items-center">
       <button
         type="button"
         onClick={() => setFilter(!filter)}
-        className="bg-blue-500 p-2 rounded-lg"
+        className="bg-blue-500 p-2 rounded-lg max-w-xs"
       >
         {' '}
         {filter ? 'Show All Films' : 'Show only Good Films '}
       </button>
-      <ul className="flex flex-col gap-8">
+      <ul className="flex flex-col gap-8 lg:flex-row lg:flex-wrap lg:justify-center">
         {!filter
           ? gameList.map((game) => {
               return (

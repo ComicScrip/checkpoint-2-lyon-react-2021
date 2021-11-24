@@ -9,7 +9,10 @@ function App() {
   return (
     <div className="App">
       <Header name="Wild Game" />
-      <div id="main" className="flex flex-col items-center pb-10 bg-gray-500">
+      <div
+        id="main"
+        className="min-h-screen flex flex-col items-center pb-10 bg-gray-500"
+      >
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/games/:id" component={GameDetails} />
