@@ -27,6 +27,7 @@ const Game = () => {
   return (
     <div>
       <h2>{game.name}</h2>
+      <h3>{game.rating}</h3>
       <p>{game.body}</p>
     </div>
   );

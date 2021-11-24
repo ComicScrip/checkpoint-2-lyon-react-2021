@@ -6,23 +6,30 @@ import { Link } from 'react-router-dom';
 const GameList = () => {
   const [gameList, setGameList] = useState([]);
   const [gameFilter, setGameFilter] = useState('');
+  
+
+
   useEffect(() => {
     axios.get('https://wild-games.jsrover.wilders.dev/games').then((res) => {
       setGameList(res.data);
     });
   }, []);
 
+  function handleClick() {
+   setGameFilter(!gameFilter)
+  }
+
   return (
     <div>
-      <input
-        placeholder='post filter'
-        value={gameFilter}
-        onChange={(e) => setGameFilter(e.target.value)}
-      />
+      
+        <button onClick={handleClick}>
+   Fiter rating note
+      </button>
+   
 
       <ul>
         {gameList
-          .filter((post) => post.name.includes(gameFilter))
+          .filter((post) => !gameFilter || post.rating >= 4.5)
           .map(({ name, id }) => (
             <li key={id}>
               <Link to={`/${id}`}>{name} </Link>
