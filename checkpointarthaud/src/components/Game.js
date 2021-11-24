@@ -7,13 +7,13 @@ import { useState } from "react";
 
 const Game = ({game}) => {
 
-    const [deleteGame, setDeleteGame] = useState()
-    function handleRemoveGame() { 
-        setDeleteGame(!deleteGame)
-    }
+    // deleteGame(e) {
+    //     e.preventDefault();
+    //     this.game.onDelete(this.props.game[i].id);
+    // };
     return (
     <>
-    <button 
+    {/* <button onClick={this.deleteGame.bind(this, i )}>Delete</button> */}
     <div key={game.id}>
       <img
         width="700"
