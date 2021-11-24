@@ -7,6 +7,7 @@ const GameList = () => {
   useEffect(() => {
     axios.get("https://wild-games.jsrover.wilders.dev/games").then((res) => {
       setGameList(res.data);
+      console.log(res.data);
     });
   }, []);
 
