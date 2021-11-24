@@ -5,6 +5,7 @@ import Game from "./Game";
 const GameList = () => {
   const [gameList, setGameList] = useState(null);
   const [filter, setFilter] = useState(false);
+  console.log(gameList);
 
   useEffect(() => {
     axios

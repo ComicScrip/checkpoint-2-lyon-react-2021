@@ -1,0 +1,23 @@
+body {
+  width: 100%;
+  margin-left: 32px;
+}
+
+.container {
+  margin: 64px 32px;
+}
+
+.flex-container {
+  margin: 32px auto;
+  width: 80%;
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.screenshot {
+  width: 30%;
+  height: auto;
+  object-fit: cover;
+}
