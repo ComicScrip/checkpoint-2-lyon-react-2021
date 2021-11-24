@@ -1,11 +1,14 @@
 import GameList from "./components/GameList";
-import Header from "./components/Header";
+import { Route, Switch } from 'react-router';
+import Home from './pages/Home'
 
 function App() {
   return (
     <div className="App">
-      <Header name="kalil" />
-      <GameList />
+     <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/games/:id" component={GameList} />
+      </Switch>
     </div>
   );
 }
