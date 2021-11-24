@@ -24,7 +24,11 @@ function GameDetails() {
 
   return (
     <div className=" flex flex-col items-center">
-      <img src={game.background_image} alt={game.name} />
+      <img
+        src={game.background_image}
+        alt={game.name}
+        className="lg:max-h-80 lg:mt-8"
+      />
       <h1 className="mt-4 text-xl text-gray-100">{game.name}</h1>
       <div id="genre" className="mt-8 w-11/12 flex flex-col gap-4 ">
         <h1 className="text-white"> Genres </h1>
@@ -54,7 +58,7 @@ function GameDetails() {
       </div>
       <div id="jeuImage" className="mt-8 flex flex-col items-center">
         <h1 className="mb-4 text-white"> {game.name} en images </h1>
-        <ul className="w-11/12 flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:justify-center">
+        <ul className="w-11/12 flex flex-col items-center gap-4 lg:flex-row lg:flex-wrap lg:justify-center">
           {game.short_screenshots.map((screenShot) => {
             return (
               <li key={screenShot.id} className="">
