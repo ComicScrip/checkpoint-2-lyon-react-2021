@@ -4,12 +4,29 @@ import Game from '../components/Game';
 
 export default function GameList() {
   const [gameList, setGameList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const getGames = () =>
+    axios
+      .get('https://wild-games.jsrover.wilders.dev/games')
+      .then((res) => res.data);
+
   const [bestGameFilterIsActive, setBestGameFilterIsActive] = useState(false);
 
   useEffect(() => {
-    axios.get('https://wild-games.jsrover.wilders.dev/games').then((res) => {
-      setGameList(res.data);
-    });
+    const loadGames = async () => {
+      try {
+        setIsError(false);
+        setIsLoading(true);
+        setGameList(await getGames());
+      } catch (err) {
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    loadGames();
   }, []);
 
   const toggleBestGamesFilter = () => {
@@ -19,6 +36,9 @@ export default function GameList() {
   const removeGame = (id) => {
     setGameList((games) => games.filter((game) => game.id !== id));
   };
+
+  if (isLoading) return <p>Loading games...</p>;
+  if (isError) return <p>Something wrong happened, please try again later</p>;
 
   return (
     <>
