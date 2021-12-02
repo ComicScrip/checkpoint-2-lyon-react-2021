@@ -2,7 +2,7 @@
 /* The line above is for properties comming from the API */
 import axios from 'axios';
 import dayjs from 'dayjs';
-import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 
 const localizedFormat = require('dayjs/plugin/localizedFormat');
@@ -11,14 +11,19 @@ dayjs.extend(localizedFormat);
 
 export default function GameDetails() {
   const { id } = useParams();
-  const [gameDetails, setGameDetails] = useState(null);
-  useEffect(() => {
+  const getGameDetails = () =>
     axios
       .get(`https://wild-games.jsrover.wilders.dev/games/${id}`)
-      .then((res) => setGameDetails(res.data));
-  }, [id]);
+      .then((res) => res.data);
 
-  if (!gameDetails) return 'loading details';
+  const {
+    data: gameDetails,
+    isLoading,
+    isError,
+  } = useQuery(['games', id], getGameDetails);
+
+  if (isLoading) return <p>Loading game details...</p>;
+  if (isError) return <p>Something wrong happened while loading the game</p>;
 
   const {
     name,

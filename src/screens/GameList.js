@@ -1,25 +1,32 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useQuery, useQueryClient } from 'react-query';
 import Game from '../components/Game';
 
 export default function GameList() {
-  const [gameList, setGameList] = useState([]);
-  const [bestGameFilterIsActive, setBestGameFilterIsActive] = useState(false);
+  const getGames = () =>
+    axios
+      .get('https://wild-games.jsrover.wilders.dev/games')
+      .then((res) => res.data);
+  const {
+    isLoading,
+    isError,
+    data: gameList,
+  } = useQuery('games', getGames, { refetchOnWindowFocus: false });
+  const client = useQueryClient();
 
-  useEffect(() => {
-    axios.get('https://wild-games.jsrover.wilders.dev/games').then((res) => {
-      // console.log(res.data);
-      setGameList(res.data);
-    });
-  }, []);
+  const removeGame = (id) => {
+    client.setQueryData('games', (games) => games.filter((g) => g.id !== id));
+  };
+
+  const [bestGameFilterIsActive, setBestGameFilterIsActive] = useState(false);
 
   const toggleBestGamesFilter = () => {
     setBestGameFilterIsActive((isActive) => !isActive);
   };
 
-  const removeGame = (id) => {
-    setGameList((games) => games.filter((game) => game.id !== id));
-  };
+  if (isLoading) return <p>Loading games...</p>;
+  if (isError) return <p>Something wrong happened, please try again later</p>;
 
   return (
     <>
