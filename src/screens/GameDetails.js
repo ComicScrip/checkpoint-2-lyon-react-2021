@@ -12,13 +12,30 @@ dayjs.extend(localizedFormat);
 export default function GameDetails() {
   const { id } = useParams();
   const [gameDetails, setGameDetails] = useState(null);
-  useEffect(() => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const getGameDetails = () =>
     axios
       .get(`https://wild-games.jsrover.wilders.dev/games/${id}`)
-      .then((res) => setGameDetails(res.data));
+      .then((res) => res.data);
+
+  useEffect(() => {
+    const loadDetails = async () => {
+      try {
+        setIsLoading(true);
+        setIsError(false);
+        setGameDetails(await getGameDetails());
+      } catch (err) {
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    loadDetails();
   }, [id]);
 
-  if (!gameDetails) return 'loading details';
+  if (isLoading || !gameDetails) return <p>Loading game details...</p>;
+  if (isError) return <p>Something wrong happened while loading the game</p>;
 
   const {
     name,
