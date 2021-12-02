@@ -8,7 +8,6 @@ export default function GameList() {
 
   useEffect(() => {
     axios.get('https://wild-games.jsrover.wilders.dev/games').then((res) => {
-      // console.log(res.data);
       setGameList(res.data);
     });
   }, []);
