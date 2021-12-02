@@ -15,14 +15,13 @@ export default function GameDetails() {
     axios
       .get(`https://wild-games.jsrover.wilders.dev/games/${id}`)
       .then((res) => res.data);
-
   const {
     data: gameDetails,
     isLoading,
     isError,
   } = useQuery(['games', id], getGameDetails);
 
-  if (isLoading) return <p>Loading game details...</p>;
+  if (isLoading || !gameDetails) return <p>Loading game details...</p>;
   if (isError) return <p>Something wrong happened while loading the game</p>;
 
   const {

@@ -14,13 +14,11 @@ export default function GameList() {
     data: gameList,
   } = useQuery('games', getGames, { refetchOnWindowFocus: false });
   const client = useQueryClient();
-
   const removeGame = (id) => {
     client.setQueryData('games', (games) => games.filter((g) => g.id !== id));
   };
 
   const [bestGameFilterIsActive, setBestGameFilterIsActive] = useState(false);
-
   const toggleBestGamesFilter = () => {
     setBestGameFilterIsActive((isActive) => !isActive);
   };
