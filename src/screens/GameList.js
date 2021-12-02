@@ -1,40 +1,26 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useQuery, useQueryClient } from 'react-query';
 import Game from '../components/Game';
 
 export default function GameList() {
-  const [gameList, setGameList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
   const getGames = () =>
     axios
       .get('https://wild-games.jsrover.wilders.dev/games')
       .then((res) => res.data);
-
-  const [bestGameFilterIsActive, setBestGameFilterIsActive] = useState(false);
-
-  useEffect(() => {
-    const loadGames = async () => {
-      try {
-        setIsError(false);
-        setIsLoading(true);
-        setGameList(await getGames());
-      } catch (err) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    loadGames();
-  }, []);
-
-  const toggleBestGamesFilter = () => {
-    setBestGameFilterIsActive((isActive) => !isActive);
+  const {
+    isLoading,
+    isError,
+    data: gameList,
+  } = useQuery('games', getGames, { refetchOnWindowFocus: false });
+  const client = useQueryClient();
+  const removeGame = (id) => {
+    client.setQueryData('games', (games) => games.filter((g) => g.id !== id));
   };
 
-  const removeGame = (id) => {
-    setGameList((games) => games.filter((game) => game.id !== id));
+  const [bestGameFilterIsActive, setBestGameFilterIsActive] = useState(false);
+  const toggleBestGamesFilter = () => {
+    setBestGameFilterIsActive((isActive) => !isActive);
   };
 
   if (isLoading) return <p>Loading games...</p>;
